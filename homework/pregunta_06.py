@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
 datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y 
@@ -15,3 +16,6 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
+    import pandas as pd
+    df = pd.read_csv('files/input/tbl1.tsv', sep='\t')
+    return sorted(df['c4'].str.upper().unique())

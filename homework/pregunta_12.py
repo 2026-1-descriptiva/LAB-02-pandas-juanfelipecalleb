@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Escriba el codigo que ejecute la accion solicitada en cada pregunta. Los
 datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y 
@@ -22,3 +23,8 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    import pandas as pd
+    df = pd.read_csv('files/input/tbl2.tsv', sep='\t')
+    def combine(group):
+        return ','.join(sorted(["{}:{}".format(row['c5a'], row['c5b']) for _, row in group.iterrows()]))
+    return df.groupby('c0').apply(combine).to_frame('c5').reset_index()
